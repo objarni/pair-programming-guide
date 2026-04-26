@@ -54,29 +54,29 @@ export default function App() {
         </h2>
 
         <div className="container">
-          {page > 0 && (
-              <div className="sidebar interactive" onClick={prevPage}>
-                {language==='sv' ? 'Förra!':'Back!'}
+          {page > 0 ? (
+              <div className="sidebar" onClick={prevPage}>
+                {language==='sv' ? '←':'←'}
               </div>
-          )}
+          ) : <div className="sidebar-placeholder" />}
 
           <div className="content">
             <div>
-              <h3>{language==='sv' ? 'Tips':'Hint'} {page + 1}</h3>
+              <h3>{language==='sv' ? 'Tips':'Hint'} {page + 1} / {hints.length}</h3>
               <div>{hints[page][language]}</div>
             </div>
           </div>
 
-          {page < hints.length - 1 && (
-              <div className="sidebar interactive" onClick={nextPage}>
-                {language==='sv' ? 'Nästa!':'Next!'}
+          {page < hints.length - 1 ? (
+              <div className="sidebar" onClick={nextPage}>
+                {language==='sv' ? '→':'→'}
               </div>
-          )}
+          ) : <div className="sidebar-placeholder" />}
         </div>
 
         <div className="language-toggle">
-          <button onClick={toggleLanguage} className="lang-button interactive">
-            {language==='sv' ? 'EN':'SV'}
+          <button onClick={toggleLanguage} className="lang-button">
+            {language==='sv' ? 'English':'Svenska'}
           </button>
         </div>
 
